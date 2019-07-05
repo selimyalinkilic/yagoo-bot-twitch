@@ -1,3 +1,34 @@
+let regex = `import
+  (?:
+    ["'\s]*
+      ([\w*{}\n, ]+)
+      from\s*
+  )?
+  ["'\s]*
+    ([@\w/_-]+)
+  ["'\s]*
+;?
+`;
+
+// Matches...
+/*
+import {
+  Component
+} from '@angular2/core';
+import defaultMember from "module-name";
+import   *    as name from "module-name  ";
+import   {  member }   from "  module-name";
+import { member as alias } from "module-name";
+import { member1 , member2 } from "module-name";
+import { member1 , member2 as alias2 , member3 as alias3 } from "module-name";
+import defaultMember, { member, member } from "module-name";
+import defaultMember, * as name from "module-name";
+import "module-name";
+*/
+
+
+
+
 // Server Code's Start
 const tmi = require("tmi.js");
 const rp = require('request-promise-native');
@@ -8,9 +39,9 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var kanser = 200;
 
 var spotifyApi = new SpotifyWebApi({
-	clientId: '44e5587d9c65441c8498157b00e7efaf',
-	clientSecret: '94f04bbdce4b44908222fab53a4b10da',
-	redirectUri: 'https://groke.se/twitch/spotify/?c10d5635545769985d74c65362560dfd'
+	clientId: '{SPOTİFY_CLİENT_İD}',
+	clientSecret: '{SPOTİFY_CLİENT_SECRET}',
+	redirectUri: '{YOUR_SPOTİFY_APİ_URL}'
   });
 
 const options = {
@@ -21,10 +52,10 @@ const options = {
 		reconnect: true
 	},
 	identity: {
-		username: "yagoo_bot",
-		password: "oauth:rvisfo0vupc3uubweif0nod802eki8"
+		username: "{YOUR_BOT_NAME]",
+		password: "{YOUR_BOT_OAUTH_CODE]"
 	},
-	channels: ["#yagoo"]
+	channels: ["{#CHANNEL}"]
 };
 
 
@@ -32,7 +63,7 @@ kraken = request.defaults({
 	baseUrl: 'https://api.twitch.tv/kraken/',
 	json: true,
 	headers: {
-		'Client-ID': 'l3sj3xhu5joj3rq9u2tz0h362stj7l',
+		'Client-ID': '{YOUR_CLİENT_İD}',
 		Accept: 'application/vnd.twitchtv.v3+json'
 	}
 });
@@ -41,11 +72,17 @@ const client = new tmi.client(options);
 
 // Connect the client to the server..
 client.connect();
-/*
+
+
+// Called every time the bot connects to Twitch chat
+function onConnectedHandler (addr, port) {
+	client.say(`* Connected to ${addr}:${port}`);
+  }
 client.on("chat", (channel, user, message, self) => {
 
-	if (self) return;
-   
+ var reg = /^[0-9]+$/;
+	//if (self) return;
+   /*
 	// Timeout Codes Start
 	if (user['mod'] == false || user != 'yagoo') {
 		let upperMsg = message.toUpperCase(),
@@ -54,15 +91,19 @@ client.on("chat", (channel, user, message, self) => {
 			client.timeout(channel, userDName, 30)
 			if (userDName != 'yagoo') {
 				client.say(channel, userDName + " Yazdığın kelimeler ayıp.(30 Saniye timeout.)")
-			}
+		
+
+
 		} else if (message == upperMsg && !message.includes(':')) {
 			client.timeout(channel, userDName, 15)
-			if (userDName != 'yagoo') {
+			if (userDName != 'yagoo' && userDName.match(reg)) {
 				client.say(channel, userDName + " Bağırmana gerek yok brom.. (15 Saniye timeout).")
-			}
-		}
-	}
-*/
+			}	}
+}*/
+})
+
+
+
 	// Timeout Codes End   
 
 	// Chat Commands Start 
@@ -78,13 +119,6 @@ client.on("chat", (channel, user, message, self) => {
 client.on("chat", (channel, user, message, self) => {
 	if (message == "!takip") {
 		client.say("yagoo", "Sağ üst kısımdan beni takip ederseniz, yayınlarımı sosyal mecralar üzerinden paylaşırsanız bana en büyük desteği vermiş olursunuz :)")
-	}
-});
-
-// Cekilis command
-client.on("chat", (channel, user, message, self) => {
-	if (message == "!cekilis") {
-		client.say("yagoo", " Bugün ki yayında 2 adet 10TL lik Steam Cüzdan kodu çekilişi olacaktır. !kod Yazarak katılabilirsiniz..")
 	}
 });
 
@@ -128,6 +162,13 @@ client.on("chat", (channel, user, message, self) => {
 client.on("chat", (channel, user, message, self) => {
 	if (message == "!komutlar") {
 		client.say("yagoo", "sosyal, takip, youtube, instagram, discord, prime, abone, donate")
+	}
+});
+
+// Çekiliş Command
+client.on("chat", (channel, user, message, self) => {
+	if (message == "!çekiliş") {
+		client.say("yagoo", "Haftalık abone hedefi dolduğunda çekiliş yapılacaktır. Çekiliş ödülleri o haftaya göre değişiklik gösterebilir.")
 	}
 });
 
@@ -264,6 +305,7 @@ client.on('message', (channel, userstate, message, fromSelf) => {
 		}, (err, res, body) => {
 			if (err) {
 				console.log('ERROR', err);
+
 				reply('Errror');
 				return;
 			} else if (res.statusCode !== 200) {
@@ -307,9 +349,9 @@ client.on("resub", function (channel, username, months, message, userstate, meth
 // Resub Command End 
 
 // Game and Title Change Command Start
-const clientID = 'l3sj3xhu5joj3rq9u2tz0h362stj7l';
-const channelID = '167305593';
-const oauthToken = '4bmcc1nn8y1km5o7iahvuhsewoypc7';
+const clientID = '{CLİENT_İD}';
+const channelID = '{CHANNEL_İD}';
+const oauthToken = '{CHANNEL_İD}';
 client.on("chat", (channel, user, message, self) => {
 	if (user['mod'] || user.username == 'yagoo') {
 		if (message.includes('!title')) {
@@ -426,7 +468,7 @@ async function getSubcount({
 // !şarkı Code's Start
 client.on("chat", (channel, user, message, self) => {
 	if (message.includes('!şarkı')) {
-		request({url: 'https://groke.se/twitch/spotify/?c10d5635545769985d74c65362560dfd', json: true}, function(err, res, json) {
+		request({url: '{YOUR_SPOTİFY_APİ_URL}', json: true}, function(err, res, json) {
 			if (err) {
 				throw err;
 			}else{
@@ -442,7 +484,7 @@ client.on("chat", (channel, user, message, self) => {
 		});
 	}
 });
-/*
+
 // Function called when the "dice" command is issued
 function rollDice () {
   const sides = 6;
@@ -453,10 +495,9 @@ function rollDice () {
 client.on("chat", (channel, user, message, self) => {
 	if (message == '!zar') {
 		const num = rollDice();
-    client.say(channel, '${num} attın');
+    client.say(channel, num +' attın');
     
   } 
 });
-*/
 
-
+		
