@@ -115,4 +115,6 @@ Ekran görüntüsü : Yakinda :)
 <br/>
 <br/>
 # Contributors
-Yilmaz Yagiz Dokumaci - https://github.com/yagizdo
+Yılmaz Yağız Dokumacı - https://github.com/yagizdo
+Selim Yalınkılıç - https://github.com/selimyalinkilic  
+Oğuzhan İnce - https://github.com/oguzsh
