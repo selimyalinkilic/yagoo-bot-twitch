@@ -74,7 +74,7 @@ function getChannelId() {
 	    url: "https://api.twitch.tv/kraken/search/channels?query=" + channel,
 	    dataType: 'json',
         headers: {
-            'Client-ID': '5lc2pznnxzs8gijvw7qgaw8eoisj6nd',
+            'Client-ID': '{CLİENT_İD}',
             'Accept': 'application/vnd.twitchtv.v5+json'
         },
         success: getChannelIdCallback
@@ -104,7 +104,7 @@ function getStream() {
 	    url: "https://api.twitch.tv/kraken/streams/" + channel,
 	    dataType: 'json',
         headers: {
-            'Client-ID': '5lc2pznnxzs8gijvw7qgaw8eoisj6nd',
+            'Client-ID': '{CLİENT_İD}',
             'Accept': 'application/vnd.twitchtv.v5+json'
         },
         success: getStreamCallback
