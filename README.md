@@ -119,5 +119,4 @@ Yılmaz Yağız Dokumacı - https://github.com/yagizdo
 </br>
 
 Selim Yalınkılıç - https://github.com/selimyalinkilic  
-</br>
-Oğuzhan İnce - https://github.com/oguzsh
+</br>Oğuzhan İnce - https://github.com/oguzsh
