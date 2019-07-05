@@ -41,7 +41,7 @@ English Information
 <br/>
 <br/>
 
-# ----------------------------------------------------------------------
+# -------------------------------------------------------------------
 Sub Command : When someone sub, they will write private messages on the chat.
 <br/>
 Example : yagoo thanks for subscription. Welcome Family <3
@@ -49,7 +49,7 @@ Example : yagoo thanks for subscription. Welcome Family <3
 Example ScreenShot : Soon :)
 <br/>
 <br/>
-# ----------------------------------------------------------------------
+# -------------------------------------------------------------------
 Resub Command : When someone re-subscribes, they will write private messages on the chat.
 <br/>
 Example : yagoo thanks for x month subscription.
