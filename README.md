@@ -1,6 +1,3 @@
-# Twitch-Bot-React-Version
-React version of Twitch Bot (https://github.com/yagizdo/Twitch-ChatBot).
-
 # Twitch-Bot
 Twitch Bot with tmi.js and Node.js.
 
